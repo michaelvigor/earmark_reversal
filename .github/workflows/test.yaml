@@ -1,0 +1,39 @@
+name: Test
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Read .tool-versions
+        uses: marocchino/tool-versions-action@v1
+        id: versions
+      - uses: erlef/setup-beam@v1
+        with:
+          elixir-version: ${{steps.versions.outputs.elixir}}
+          otp-version: ${{ steps.versions.outputs.erlang}}
+      - uses: actions/cache@v2
+        with:
+          path: |
+            deps
+            _build
+          key: ${{ runner.os }}-mix-${{steps.versions.outputs.elixir}}-${{steps.versions.outputs.erlang}}-${{ hashFiles('**/mix.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-mix-
+
+      - run: mix deps.get
+
+      - run: mix format --check-formatted
+
+      - run: mix deps.unlock --check-unused
+
+      - run: mix deps.compile
+
+      - run: mix compile --warnings-as-errors
+
+      - run: mix test
+
