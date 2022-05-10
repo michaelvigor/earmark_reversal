@@ -1,6 +1,6 @@
 # EarmarkReversal
 
-Convert an [Earmark AST](https://hex.pm/packages/earmark_parser) back to a Markdown string. All the code in this package has been ripped out of the [Livebook](https://github.com/livebook-dev/livebook) project (specifically the https://github.com/livebook-dev/livebook/blob/main/lib/livebook/live_markdown/markdown_helpers.ex) so it can be used as a standalone helper.  No original code has been written for this package, so all credit should go to the original Livebook author [Jonatan Kłosko](https://github.com/jonatanklosko) :clap:
+Convert an [Earmark AST](https://hex.pm/packages/earmark_parser) back to a Markdown string. All the code in this package has been ripped out of the [Livebook](https://github.com/livebook-dev/livebook) project (specifically the [MarkdownHelpers module](https://github.com/livebook-dev/livebook/blob/main/lib/livebook/live_markdown/markdown_helpers.ex)) so it can be used as a standalone helper.  No original code has been written for this package, so all credit should go to the original Livebook author [Jonatan Kłosko](https://github.com/jonatanklosko) :clap:
 
 ## Usage
 
