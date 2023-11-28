@@ -251,6 +251,7 @@ defmodule EarmarkReversal do
         "text-align: left;" -> :left
         "text-align: center;" -> :center
         "text-align: right;" -> :right
+        _ -> :left
       end
     end)
   end
